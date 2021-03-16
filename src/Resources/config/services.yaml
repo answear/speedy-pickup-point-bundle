@@ -5,7 +5,7 @@ services:
         public: false
 
     Answear\SpeedyBundle\:
-        resource: '../../../src/{Action,Client}'
+        resource: '../../../src/{Command,Client}'
 
     Answear\SpeedyBundle\ConfigProvider: ~
 
