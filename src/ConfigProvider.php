@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Answear\SpeedyBundle;
 
-class Configuration
+class ConfigProvider
 {
     private const URL = 'https://api.speedy.bg/';
     private const API_VERSION = 'v1';

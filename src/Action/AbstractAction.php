@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Answear\SpeedyBundle\Action;
+
+use Answear\SpeedyBundle\Exception\MalformedResponseException;
+use Answear\SpeedyBundle\Response\ErrorResponse;
+use Psr\Http\Message\ResponseInterface;
+use Webmozart\Assert\Assert;
+
+abstract class AbstractAction
+{
+    protected function getBody(ResponseInterface $response): array
+    {
+        try {
+            $body = $response->getBody()->getContents();
+
+            if (empty($body)) {
+                throw new \RuntimeException('Empty response.');
+            }
+            $decoded = \json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+            Assert::isArray($decoded);
+
+            if (ErrorResponse::isErrorResponse($decoded)) {
+                throw new MalformedResponseException('Error response', ErrorResponse::fromArray($decoded));
+            }
+        } catch (\Throwable $e) {
+            throw new MalformedResponseException($e->getMessage(), $response, $e);
+        }
+
+        return $decoded;
+    }
+}

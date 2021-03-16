@@ -6,9 +6,11 @@
   "require": {
     "php": ">=7.4",
     "ext-json": "*",
-    "webmozart/assert": "^1.3",
     "guzzlehttp/guzzle": "^6.0",
-    "symfony/http-kernel": "^4.4|^5.0"
+    "marc-mabe/php-enum": "^3.0|^4.3",
+    "symfony/http-kernel": "^4.4|^5.0",
+    "symfony/serializer": "^4.4|^5.0",
+    "webmozart/assert": "^1.3"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

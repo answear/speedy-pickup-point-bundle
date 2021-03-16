@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Answear\SpeedyBundle\DependencyInjection;
 
+use Answear\SpeedyBundle\ConfigProvider;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -22,13 +23,13 @@ class AnswearSpeedyExtension extends Extension
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
 
-        $definition = $container->getDefinition(\Answear\SpeedyBundle\Configuration::class);
+        $definition = $container->getDefinition(ConfigProvider::class);
         $definition->setArguments(
             [
                 $config['username'],
                 $config['password'],
                 $config['language'],
-                $config['clieantSystemId'],
+                $config['clientSystemId'],
             ]
         );
     }

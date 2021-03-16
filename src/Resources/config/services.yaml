@@ -4,4 +4,8 @@ services:
         autoconfigure: true
         public: false
 
-    Answear\SpeedyBundle\Configuration: ~
+    Answear\SpeedyBundle\:
+        resource: '../../../../src/{Action,Client}'
+
+    Answear\SpeedyBundle\ConfigProvider: ~
+
