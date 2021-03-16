@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('username')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('password')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('language')->isRequired()->cannotBeEmpty()->end()
-                ->integerNode('clientSystemId')->defaultNull()->end()
+                ->scalarNode('clientSystemId')->defaultNull()->end()
             ->end();
 
         return $treeBuilder;

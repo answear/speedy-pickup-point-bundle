@@ -29,7 +29,7 @@ class AnswearSpeedyExtension extends Extension
                 $config['username'],
                 $config['password'],
                 $config['language'],
-                $config['clientSystemId'],
+                null !== $config['clientSystemId'] ? (int) $config['clientSystemId'] : null,
             ]
         );
     }
