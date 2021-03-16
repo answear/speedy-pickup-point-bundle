@@ -15,20 +15,24 @@ class Serializer
 
     private SymfonySerializer $serializer;
 
-    public function __construct()
-    {
-        $this->serializer = new SymfonySerializer(
-            [new Normalizer\PropertyNormalizer()],
-            [new JsonEncoder()]
-        );
-    }
-
     public function serialize(Request $request): string
     {
-        return $this->serializer->serialize(
+        return $this->getSerializer()->serialize(
             $request,
             static::FORMAT,
             [Normalizer\AbstractObjectNormalizer::SKIP_NULL_VALUES => true]
         );
+    }
+
+    private function getSerializer(): SymfonySerializer
+    {
+        if (!isset($this->serializer)) {
+            $this->serializer = new SymfonySerializer(
+                [new Normalizer\PropertyNormalizer()],
+                [new JsonEncoder()]
+            );
+        }
+
+        return $this->serializer;
     }
 }
