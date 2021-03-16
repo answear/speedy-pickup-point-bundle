@@ -8,31 +8,26 @@ use Webmozart\Assert\Assert;
 
 class OfficeAddress extends ShipmentAddress
 {
+    private const SITE_ADDRESS_STRING = 'siteAddressString';
+    private const FULL_ADDRESS_STRING = 'fullAddressString';
+    private const LOCAL_ADDRESS_STRING = 'localAddressString';
+
     public string $fullAddressString;
     public string $siteAddressString;
     public string $localAddressString;
 
-    public static function fromArray(array $officeData): self
+    public static function fromArray(array $addressData): self
     {
-        Assert::keyExists($officeData, 'fullAddressString');
-        Assert::keyExists($officeData, 'siteAddressString');
-        Assert::keyExists($officeData, 'localAddressString');
+        Assert::keyExists($addressData, self::FULL_ADDRESS_STRING);
+        Assert::keyExists($addressData, self::SITE_ADDRESS_STRING);
+        Assert::keyExists($addressData, self::LOCAL_ADDRESS_STRING);
 
-        return new self();
-    }
+        $address = new self();
+        $address->setBaseShipmentProperties($addressData);
+        $address->fullAddressString = $addressData[self::FULL_ADDRESS_STRING];
+        $address->siteAddressString = $addressData[self::SITE_ADDRESS_STRING];
+        $address->localAddressString = $addressData[self::LOCAL_ADDRESS_STRING];
 
-    public function getFullAddressString(): string
-    {
-        return $this->fullAddressString;
-    }
-
-    public function getSiteAddressString(): string
-    {
-        return $this->siteAddressString;
-    }
-
-    public function getLocalAddressString(): string
-    {
-        return $this->localAddressString;
+        return $address;
     }
 }

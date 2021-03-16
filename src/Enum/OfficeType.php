@@ -8,8 +8,8 @@ use MabeEnum\Enum;
 
 class OfficeType extends Enum
 {
-    public const OFFICE = 'office';
-    public const APT = 'apt';
+    public const OFFICE = 'OFFICE';
+    public const APT = 'APT';
 
     public static function office(): self
     {

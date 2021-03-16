@@ -2,19 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Answear\SpeedyBundle\Tests\Integration\Action;
+namespace Answear\SpeedyBundle\Tests\Integration\Command;
 
-use Answear\SpeedyBundle\Action\FindOffice;
 use Answear\SpeedyBundle\Client\AuthenticationDecorator;
 use Answear\SpeedyBundle\Client\Client;
 use Answear\SpeedyBundle\Client\RequestTransformer;
 use Answear\SpeedyBundle\Client\Serializer;
-use Answear\SpeedyBundle\ConfigProvider;
+use Answear\SpeedyBundle\Command\FindOffice;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
+use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
 use Monolog\Test\TestCase;
 
-class FetchPickupPoints extends TestCase
+class FindOfficeTest extends TestCase
 {
+    use ConfigProviderTrait;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -27,13 +29,13 @@ class FetchPickupPoints extends TestCase
      */
     public function test(): void
     {
-        $configProvider = new ConfigProvider('999101', '9642589187', 'BG');
+        $this->markTestSkipped();
 
-        $client = new Client($configProvider);
+        $client = new Client($this->getConfiguration());
         $transformer = new RequestTransformer(
             new Serializer(),
-            new AuthenticationDecorator($configProvider),
-            $configProvider
+            new AuthenticationDecorator($this->getConfiguration()),
+            $this->getConfiguration()
         );
 
         $action = new FindOffice($client, $transformer);

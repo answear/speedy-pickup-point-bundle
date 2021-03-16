@@ -8,9 +8,9 @@ use MabeEnum\Enum;
 
 class CargoType extends Enum
 {
-    public const PARCEL = 'parcel';
-    public const PALLET = 'pallet';
-    public const TYRE = 'tyre';
+    public const PARCEL = 'PARCEL';
+    public const PALLET = 'PALLET';
+    public const TYRE = 'TYRE';
 
     public static function parcel(): self
     {

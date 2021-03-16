@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Answear\SpeedyBundle\Action;
+namespace Answear\SpeedyBundle\Command;
 
 use Answear\SpeedyBundle\Client\Client;
 use Answear\SpeedyBundle\Client\RequestTransformer;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
 use Answear\SpeedyBundle\Response\FindOfficeResponse;
 
-class FindOffice extends AbstractAction
+class FindOffice extends AbstractCommand
 {
     private Client $client;
     private RequestTransformer $transformer;

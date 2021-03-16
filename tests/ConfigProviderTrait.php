@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Answear\SpeedyBundle\Tests\Unit\Client;
+namespace Answear\SpeedyBundle\Tests;
 
 use Answear\SpeedyBundle\ConfigProvider;
 
-trait ConfigurationTrait
+trait ConfigProviderTrait
 {
     public function getConfiguration(): ConfigProvider
     {

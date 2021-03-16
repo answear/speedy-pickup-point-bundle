@@ -9,11 +9,12 @@ use Answear\SpeedyBundle\Client\RequestTransformer;
 use Answear\SpeedyBundle\Client\Serializer;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
 use Answear\SpeedyBundle\Request\Request;
+use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
 use PHPUnit\Framework\TestCase;
 
 class RequestTransformerTest extends TestCase
 {
-    use ConfigurationTrait;
+    use ConfigProviderTrait;
 
     private RequestTransformer $transformer;
     /**

@@ -28,13 +28,15 @@ class FindOfficeResponse
     {
         Assert::keyExists($arrayResponse, static::OFFICES);
 
-        $offices = [];
-        foreach ($arrayResponse[static::OFFICES] as $officeData) {
-            $office = Office::fromArray($officeData);
-
-            $offices[] = $office;
-        }
-
-        return new self(new OfficeCollection($offices));
+        return new self(
+            new OfficeCollection(
+                array_map(
+                    static function ($officeData) {
+                        return Office::fromArray($officeData);
+                    },
+                    $arrayResponse[static::OFFICES]
+                )
+            )
+        );
     }
 }

@@ -6,11 +6,12 @@ namespace Answear\SpeedyBundle\Tests\Unit\Client;
 
 use Answear\SpeedyBundle\Client\AuthenticationDecorator;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
+use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
 use PHPUnit\Framework\TestCase;
 
 class AuthenticationDecoratorTest extends TestCase
 {
-    use ConfigurationTrait;
+    use ConfigProviderTrait;
 
     /**
      * @test

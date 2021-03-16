@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Answear\SpeedyBundle\Action;
+namespace Answear\SpeedyBundle\Command;
 
 use Answear\SpeedyBundle\Exception\MalformedResponseException;
 use Answear\SpeedyBundle\Response\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 use Webmozart\Assert\Assert;
 
-abstract class AbstractAction
+abstract class AbstractCommand
 {
     protected function getBody(ResponseInterface $response): array
     {
