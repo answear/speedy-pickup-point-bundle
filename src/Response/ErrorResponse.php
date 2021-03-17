@@ -8,13 +8,6 @@ use Webmozart\Assert\Assert;
 
 class ErrorResponse
 {
-    private const ERROR = 'error';
-    private const ERROR_MESSAGE = 'message';
-    private const ERROR_ID = 'id';
-    private const ERROR_CODE = 'code';
-    private const ERROR_CONTEXT = 'context';
-    private const ERROR_COMPONENT = 'component';
-
     public string $message;
     public string $id;
     public int $code;
@@ -37,7 +30,7 @@ class ErrorResponse
 
     public static function isErrorResponse(array $response): bool
     {
-        return isset($response[static::ERROR]);
+        return isset($response['error']);
     }
 
     public static function fromArray(array $response): self
@@ -46,18 +39,18 @@ class ErrorResponse
             throw new \RuntimeException('Cannot create ErrorResponse');
         }
 
-        $response = $response[static::ERROR];
+        $response = $response['error'];
 
-        Assert::keyExists($response, static::ERROR_MESSAGE);
-        Assert::keyExists($response, static::ERROR_ID);
-        Assert::keyExists($response, static::ERROR_CODE);
+        Assert::keyExists($response, 'message');
+        Assert::keyExists($response, 'id');
+        Assert::keyExists($response, 'code');
 
         return new self(
-            $response[static::ERROR_MESSAGE],
-            $response[static::ERROR_ID],
-            (int) $response[static::ERROR_CODE],
-            $response[static::ERROR_CONTEXT] ?? null,
-            $response[static::ERROR_COMPONENT] ?? null,
+            $response['message'],
+            $response['id'],
+            (int) $response['code'],
+            $response['context'] ?? null,
+            $response['component'] ?? null,
         );
     }
 }

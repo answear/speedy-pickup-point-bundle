@@ -10,12 +10,6 @@ use Webmozart\Assert\Assert;
 
 class Office
 {
-    private const ID = 'id';
-    private const NAME = 'name';
-    private const NAME_EN = 'nameEn';
-    private const SITE_ID = 'siteId';
-    private const ADDRESS = 'address';
-
     public int $id;
     public string $name;
     public string $nameEn;
@@ -38,11 +32,11 @@ class Office
 
     public static function fromArray(array $officeData): self
     {
-        Assert::integer($officeData[static::ID]);
-        Assert::stringNotEmpty($officeData[static::NAME]);
-        Assert::stringNotEmpty($officeData[static::NAME_EN]);
-        Assert::integer($officeData[static::SITE_ID]);
-        Assert::isArray($officeData[static::ADDRESS]);
+        Assert::integer($officeData['id']);
+        Assert::stringNotEmpty($officeData['name']);
+        Assert::stringNotEmpty($officeData['nameEn']);
+        Assert::integer($officeData['siteId']);
+        Assert::isArray($officeData['address']);
         Assert::isArray($officeData['workingTime']);
         Assert::isArray($officeData['maxParcelDimensions']);
         Assert::float($officeData['maxParcelWeight']);
@@ -57,11 +51,11 @@ class Office
         Assert::boolean($officeData['dropOffAllowed']);
 
         $office = new self();
-        $office->id = $officeData[static::ID];
-        $office->name = $officeData[static::NAME];
-        $office->nameEn = $officeData[static::NAME_EN];
-        $office->siteId = $officeData[static::SITE_ID];
-        $office->address = OfficeAddress::fromArray($officeData[static::ADDRESS]);
+        $office->id = $officeData['id'];
+        $office->name = $officeData['name'];
+        $office->nameEn = $officeData['nameEn'];
+        $office->siteId = $officeData['siteId'];
+        $office->address = OfficeAddress::fromArray($officeData['address']);
         $office->workingTime = WorkingTime::fromArray($officeData['workingTime']);
         $office->maxParcelDimension = ShipmentParcelSize::fromArray($officeData['maxParcelDimensions']);
         $office->maxParcelWeight = $officeData['maxParcelWeight'];

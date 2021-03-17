@@ -10,8 +10,6 @@ use Webmozart\Assert\Assert;
 
 class FindOfficeResponse
 {
-    private const OFFICES = 'offices';
-
     public OfficeCollection $offices;
 
     public function __construct(OfficeCollection $offices)
@@ -26,7 +24,7 @@ class FindOfficeResponse
 
     public static function fromArray(array $arrayResponse): self
     {
-        Assert::keyExists($arrayResponse, static::OFFICES);
+        Assert::keyExists($arrayResponse, 'offices');
 
         return new self(
             new OfficeCollection(
@@ -34,7 +32,7 @@ class FindOfficeResponse
                     static function ($officeData) {
                         return Office::fromArray($officeData);
                     },
-                    $arrayResponse[static::OFFICES]
+                    $arrayResponse['offices']
                 )
             )
         );
