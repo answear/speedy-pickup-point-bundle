@@ -8,6 +8,9 @@ use Webmozart\Assert\Assert;
 
 class WorkingTimeSchedule implements \Countable
 {
+    /**
+     * @var WorkingTime[]
+     */
     private array $workingTimeCollection;
 
     public static function fromArray(array $data): self
@@ -34,5 +37,13 @@ class WorkingTimeSchedule implements \Countable
     public function count(): int
     {
         return \count($this->workingTimeCollection);
+    }
+
+    /**
+     * return WorkingTime[]
+     */
+    public function toArray(): array
+    {
+        return $this->workingTimeCollection;
     }
 }
