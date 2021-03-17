@@ -11,7 +11,7 @@ use Answear\SpeedyBundle\Client\Serializer;
 use Answear\SpeedyBundle\Command\FindOffice;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
 use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
-use Monolog\Test\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class FindOfficeTest extends TestCase
 {
