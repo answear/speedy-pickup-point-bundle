@@ -74,6 +74,7 @@ class FindOfficeTest extends TestCase
         $this->assertSame($office->address->siteName, 'Example city');
         $this->assertSame($office->address->latitude, 42.987654);
         $this->assertSame($office->address->longitude, 24.123456);
+        $this->assertCount(9, $office->workingTimeSchedule);
     }
 
     private function getCommand(): FindOffice

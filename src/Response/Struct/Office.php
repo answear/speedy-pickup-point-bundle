@@ -15,7 +15,7 @@ class Office
     public string $nameEn;
     public int $siteId;
     public OfficeAddress $address;
-    public WorkingTime $workingTime;
+    public WorkingTimeSchedule $workingTimeSchedule;
     public ShipmentParcelSize $maxParcelDimension;
     public float $maxParcelWeight;
     public OfficeType $type;
@@ -56,7 +56,7 @@ class Office
         $office->nameEn = $officeData['nameEn'];
         $office->siteId = $officeData['siteId'];
         $office->address = OfficeAddress::fromArray($officeData['address']);
-        $office->workingTime = WorkingTime::fromArray($officeData);
+        $office->workingTimeSchedule = WorkingTimeSchedule::fromArray($officeData);
         $office->maxParcelDimension = ShipmentParcelSize::fromArray($officeData['maxParcelDimensions']);
         $office->maxParcelWeight = $officeData['maxParcelWeight'];
         $office->type = OfficeType::get($officeData['type']);

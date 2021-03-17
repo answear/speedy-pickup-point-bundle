@@ -6,8 +6,16 @@ namespace Answear\SpeedyBundle\Response\Struct;
 
 class WorkingTime
 {
-    public static function fromArray(array $data): self
+    public \DateTimeInterface $date;
+    public string $timeFrom;
+    public string $timeTo;
+    public bool $standardSchedule;
+
+    public function __construct(string $date, string $timeFrom, string $timeTo, bool $standardSchedule)
     {
-        return new self();
+        $this->date = new \DateTimeImmutable($date);
+        $this->timeFrom = $timeFrom;
+        $this->timeTo = $timeTo;
+        $this->standardSchedule = $standardSchedule;
     }
 }
