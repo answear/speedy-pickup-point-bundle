@@ -29,9 +29,7 @@ class FindOfficeResponse
         return new self(
             new OfficeCollection(
                 array_map(
-                    static function ($officeData) {
-                        return Office::fromArray($officeData);
-                    },
+                    fn ($officeData) => Office::fromArray($officeData),
                     $arrayResponse['offices']
                 )
             )

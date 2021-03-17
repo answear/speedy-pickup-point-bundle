@@ -38,7 +38,7 @@ class Client
                 $response->getBody()->rewind();
             }
         } catch (GuzzleException $e) {
-            throw new ServiceUnavailableException($e->getCode(), $e->getMessage(), $e);
+            throw new ServiceUnavailableException($e->getMessage(), $e->getCode(), $e);
         }
 
         return $response;

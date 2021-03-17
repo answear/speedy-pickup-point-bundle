@@ -25,11 +25,20 @@ answear_speedy:
     clientSystemId: 12345
 ```
 
-config will be passed to `\Answear\SpeedyBundle\Configuration.php` class.
+config will be passed to `\Answear\SpeedyBundle\ConfigProvider.php` class.
 
 ## Usage
 
-todo
+### Find Office
+
+```php
+use Answear\SpeedyBundle\Command\FindOffice;
+use Answear\SpeedyBundle\Request\FindOfficeRequest;
+
+/** @var FindOffice $findOfficeCommand */
+$findOfficeResponse = $findOfficeCommand->findOffice(new FindOfficeRequest());
+```
+
 
 Final notes
 ------------
