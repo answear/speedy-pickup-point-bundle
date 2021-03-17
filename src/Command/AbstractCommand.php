@@ -21,12 +21,12 @@ abstract class AbstractCommand
             }
             $decoded = \json_decode($body, true, 512, JSON_THROW_ON_ERROR);
             Assert::isArray($decoded);
-
-            if (ErrorResponse::isErrorResponse($decoded)) {
-                throw new MalformedResponseException('Error response', ErrorResponse::fromArray($decoded));
-            }
         } catch (\Throwable $e) {
             throw new MalformedResponseException($e->getMessage(), $response, $e);
+        }
+
+        if (ErrorResponse::isErrorResponse($decoded)) {
+            throw new MalformedResponseException('Error response', ErrorResponse::fromArray($decoded));
         }
 
         return $decoded;

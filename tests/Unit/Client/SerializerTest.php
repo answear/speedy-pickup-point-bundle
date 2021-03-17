@@ -11,6 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 class SerializerTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+    }
+
     /**
      * @test
      * @dataProvider provider
@@ -25,13 +30,13 @@ class SerializerTest extends TestCase
     public function provider(): iterable
     {
         yield 'requestFields' => [
-            new FindOfficeRequest(100, 1, 'office_name', 100),
-            '{"countryId":100,"siteId":1,"name":"office_name","limit":100}',
+            $this->getAuthenticatedRequest(100, 1, 'office_name', 100),
+            '{"countryId":100,"siteId":1,"name":"office_name","limit":100,"userName":"username","password":"password","language":"language","clientSystemId":999}',
         ];
 
         yield 'skipNullValues' => [
-            new FindOfficeRequest(100, null, 'office_name'),
-            '{"countryId":100,"name":"office_name"}',
+            $this->getAuthenticatedRequest(100, null, 'office_name'),
+            '{"countryId":100,"name":"office_name","userName":"username","password":"password","language":"language","clientSystemId":999}',
         ];
 
         yield 'serializeAuthenticationData' => [
@@ -40,9 +45,13 @@ class SerializerTest extends TestCase
         ];
     }
 
-    private function getAuthenticatedRequest(): Request
-    {
-        $request = new FindOfficeRequest();
+    private function getAuthenticatedRequest(
+        ?int $countryId = null,
+        ?int $siteId = null,
+        ?string $name = null,
+        ?int $limit = null
+    ): Request {
+        $request = new FindOfficeRequest($countryId, $siteId, $name, $limit);
         $request->setUserName('username');
         $request->setPassword('password');
         $request->setLanguage('language');

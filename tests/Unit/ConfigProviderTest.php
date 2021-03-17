@@ -7,7 +7,7 @@ namespace Answear\SpeedyBundle\Tests\Unit;
 use Answear\SpeedyBundle\ConfigProvider;
 use PHPUnit\Framework\TestCase;
 
-class ConfigurationTest extends TestCase
+class ConfigProviderTest extends TestCase
 {
     /**
      * @test
