@@ -37,7 +37,7 @@ class Office
         Assert::stringNotEmpty($officeData['nameEn']);
         Assert::integer($officeData['siteId']);
         Assert::isArray($officeData['address']);
-        Assert::isArray($officeData['workingTime']);
+        Assert::isArray($officeData['workingTimeSchedule']);
         Assert::isArray($officeData['maxParcelDimensions']);
         Assert::float($officeData['maxParcelWeight']);
         Assert::string($officeData['type']);
@@ -56,7 +56,7 @@ class Office
         $office->nameEn = $officeData['nameEn'];
         $office->siteId = $officeData['siteId'];
         $office->address = OfficeAddress::fromArray($officeData['address']);
-        $office->workingTime = WorkingTime::fromArray($officeData['workingTime']);
+        $office->workingTime = WorkingTime::fromArray($officeData);
         $office->maxParcelDimension = ShipmentParcelSize::fromArray($officeData['maxParcelDimensions']);
         $office->maxParcelWeight = $officeData['maxParcelWeight'];
         $office->type = OfficeType::get($officeData['type']);
