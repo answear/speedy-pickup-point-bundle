@@ -8,6 +8,7 @@ class ConfigProvider
 {
     private const URL = 'https://api.speedy.bg/';
     private const API_VERSION = 'v1';
+
     private string $username;
     private string $password;
     private string $language;
