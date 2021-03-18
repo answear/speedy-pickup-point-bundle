@@ -6,7 +6,7 @@ namespace Answear\SpeedyBundle\Response\Struct;
 
 use Webmozart\Assert\Assert;
 
-class WorkingTimeSchedule implements \Countable
+class WorkingTimeSchedule implements \Countable, \IteratorAggregate
 {
     /**
      * @var WorkingTime[]
@@ -34,16 +34,18 @@ class WorkingTimeSchedule implements \Countable
         return $schedule;
     }
 
+    /**
+     * @return WorkingTime[]
+     */
+    public function getIterator(): iterable
+    {
+        foreach ($this->workingTimeCollection as $key => $workingTime) {
+            yield $key => $workingTime;
+        }
+    }
+
     public function count(): int
     {
         return \count($this->workingTimeCollection);
-    }
-
-    /**
-     * return WorkingTime[]
-     */
-    public function toArray(): array
-    {
-        return $this->workingTimeCollection;
     }
 }
