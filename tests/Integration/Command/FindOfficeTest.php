@@ -64,8 +64,9 @@ class FindOfficeTest extends TestCase
 
     private function assertOffice(FindOfficeResponse $response): void
     {
-        $office = $response->getOffices()->toArray()[0];
+        $office = $response->getOffices()->get(0);
 
+        $this->assertNotNull($office);
         $this->assertSame($office->id, 1);
         $this->assertSame($office->name, 'Office name');
         $this->assertSame($office->nameEn, 'English office name');

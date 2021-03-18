@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
  *
  * @url https://api.speedy.bg/web-api.html#href-ds-shipment-address
  */
-class OfficeCollection implements \Countable
+class OfficeCollection implements \Countable, \IteratorAggregate
 {
     /**
      * @var Office[]
@@ -28,9 +28,16 @@ class OfficeCollection implements \Countable
     /**
      * @return Office[]
      */
-    public function toArray(): array
+    public function getIterator(): iterable
     {
-        return $this->offices;
+        foreach ($this->offices as $key => $office) {
+            yield $key => $office;
+        }
+    }
+
+    public function get($key): ?Office
+    {
+        return $this->offices[$key] ?? null;
     }
 
     public function count(): int
