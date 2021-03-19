@@ -14,12 +14,12 @@ class ConfigProvider
     private string $language;
     private ?int $clientSystemId;
 
-    public function __construct(string $username, string $password, string $language, ?int $clientSystemId = null)
+    public function __construct(string $username, string $password, string $language, ?string $clientSystemId = null)
     {
         $this->username = $username;
         $this->password = $password;
         $this->language = $language;
-        $this->clientSystemId = $clientSystemId;
+        $this->clientSystemId = empty($clientSystemId) || !\is_numeric($clientSystemId) ? null : (int) $clientSystemId;
     }
 
     public function getUrl(): string
