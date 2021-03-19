@@ -10,6 +10,6 @@ trait ConfigProviderTrait
 {
     public function getConfiguration(): ConfigProvider
     {
-        return new ConfigProvider('username', 'password', 'language', 999);
+        return new ConfigProvider('username', 'password', 'language', '999');
     }
 }
