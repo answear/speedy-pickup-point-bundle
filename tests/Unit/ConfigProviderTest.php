@@ -14,7 +14,7 @@ class ConfigProviderTest extends TestCase
      */
     public function gettersAreValid(): void
     {
-        $configuration = new ConfigProvider('1username', '2password', '3language', 4);
+        $configuration = new ConfigProvider('1username', '2password', '3language', '4');
 
         $this->assertSame('1username', $configuration->getUsername());
         $this->assertSame('2password', $configuration->getPassword());
