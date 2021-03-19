@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Answear\SpeedyBundle\:
+        resource: '../../../src/{Command,Client}'
+
+    Answear\SpeedyBundle\ConfigProvider: ~
+

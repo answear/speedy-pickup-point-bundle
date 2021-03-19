@@ -1,0 +1,109 @@
+{
+  "offices": [
+    {
+      "id": 1,
+      "name": "Office name",
+      "nameEn": "English office name",
+      "siteId": 1254,
+      "address": {
+        "countryId": 100,
+        "siteId": 1254,
+        "siteType": "city",
+        "siteName": "Example city",
+        "postCode": "1200",
+        "streetId": 12345,
+        "streetType": "street",
+        "streetName": "Street name",
+        "streetNo": "111a",
+        "x": 24.123456,
+        "y": 42.987654,
+        "fullAddressString": "full address, site address, local address No 111a",
+        "siteAddressString": "site address, local address No 111a",
+        "localAddressString": "local address No 111a"
+      },
+      "workingTimeFrom": "08:30",
+      "workingTimeTo": "19:30",
+      "workingTimeHalfFrom": "08:30",
+      "workingTimeHalfTo": "14:30",
+      "workingTimeDayOffFrom": "00:00",
+      "workingTimeDayOffTo": "00:00",
+      "maxParcelDimensions": {
+        "width": 240,
+        "height": 240,
+        "depth": 600
+      },
+      "maxParcelWeight": 1200.00,
+      "type": "OFFICE",
+      "nearbyOfficeId": 0,
+      "workingTimeSchedule": [
+        {
+          "date": "2021-03-17",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-18",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-19",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-20",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "14:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-22",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-23",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-24",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-25",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        },
+        {
+          "date": "2021-03-26",
+          "workingTimeFrom": "08:30",
+          "workingTimeTo": "19:30",
+          "standardSchedule": true
+        }
+      ],
+      "validFrom": "2000-01-01",
+      "validTo": "3000-01-01",
+      "cargoTypesAllowed": [
+        "PALLET",
+        "PARCEL",
+        "TYRE"
+      ],
+      "pickUpAllowed": true,
+      "dropOffAllowed": true,
+      "cashPaymentAllowed": true,
+      "palletOffice": true,
+      "cardPaymentAllowed": true
+    }
+  ]
+}
+
