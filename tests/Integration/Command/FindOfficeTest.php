@@ -76,6 +76,16 @@ class FindOfficeTest extends TestCase
         $this->assertSame($office->address->latitude, 42.987654);
         $this->assertSame($office->address->longitude, 24.123456);
         $this->assertCount(9, $office->workingTimeSchedule);
+
+        $this->assertSame('08:30', $office->openingSchedule->weekday->from);
+        $this->assertSame('19:30', $office->openingSchedule->weekday->to);
+        $this->assertFalse($office->openingSchedule->weekday->isClosed());
+        $this->assertSame('08:30', $office->openingSchedule->saturday->from);
+        $this->assertSame('14:30', $office->openingSchedule->saturday->to);
+        $this->assertFalse($office->openingSchedule->saturday->isClosed());
+        $this->assertSame('00:00', $office->openingSchedule->sunday->from);
+        $this->assertSame('00:00', $office->openingSchedule->sunday->to);
+        $this->assertTrue($office->openingSchedule->sunday->isClosed());
     }
 
     private function getCommand(): FindOffice
