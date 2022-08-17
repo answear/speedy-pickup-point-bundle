@@ -1,0 +1,26 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property Answear\\\\SpeedyBundle\\\\Client\\\\Client\\:\\:\\$configuration is never read, only written\\.$#"
+			count: 1
+			path: src/Client/Client.php
+
+		-
+			message: "#^Property Answear\\\\SpeedyBundle\\\\Request\\\\FindOfficeRequest\\:\\:\\$countryId is never read, only written\\.$#"
+			count: 1
+			path: src/Request/FindOfficeRequest.php
+
+		-
+			message: "#^Property Answear\\\\SpeedyBundle\\\\Request\\\\FindOfficeRequest\\:\\:\\$limit is never read, only written\\.$#"
+			count: 1
+			path: src/Request/FindOfficeRequest.php
+
+		-
+			message: "#^Property Answear\\\\SpeedyBundle\\\\Request\\\\FindOfficeRequest\\:\\:\\$name is never read, only written\\.$#"
+			count: 1
+			path: src/Request/FindOfficeRequest.php
+
+		-
+			message: "#^Property Answear\\\\SpeedyBundle\\\\Request\\\\FindOfficeRequest\\:\\:\\$siteId is never read, only written\\.$#"
+			count: 1
+			path: src/Request/FindOfficeRequest.php

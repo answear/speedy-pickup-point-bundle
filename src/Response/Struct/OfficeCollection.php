@@ -26,9 +26,9 @@ class OfficeCollection implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return Office[]
+     * @return \Traversable<Office>
      */
-    public function getIterator(): iterable
+    public function getIterator(): \Traversable
     {
         foreach ($this->offices as $key => $office) {
             yield $key => $office;

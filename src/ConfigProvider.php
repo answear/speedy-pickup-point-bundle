@@ -24,12 +24,12 @@ class ConfigProvider
 
     public function getUrl(): string
     {
-        return static::URL;
+        return self::URL;
     }
 
     public function getApiVersion(): string
     {
-        return static::API_VERSION;
+        return self::API_VERSION;
     }
 
     public function getUsername(): string

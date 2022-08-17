@@ -19,7 +19,7 @@ class Serializer
     {
         return $this->getSerializer()->serialize(
             $request,
-            static::FORMAT,
+            self::FORMAT,
             [Normalizer\AbstractObjectNormalizer::SKIP_NULL_VALUES => true]
         );
     }
