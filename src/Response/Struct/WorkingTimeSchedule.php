@@ -35,9 +35,9 @@ class WorkingTimeSchedule implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return WorkingTime[]
+     * @return \Traversable<WorkingTime>
      */
-    public function getIterator(): iterable
+    public function getIterator(): \Traversable
     {
         foreach ($this->workingTimeCollection as $key => $workingTime) {
             yield $key => $workingTime;
