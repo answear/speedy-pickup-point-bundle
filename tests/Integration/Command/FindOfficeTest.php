@@ -101,7 +101,7 @@ class FindOfficeTest extends TestCase
 
     private function getSuccessfulBody(): string
     {
-        return file_get_contents(__DIR__ . '/data/exampleResponse.json');
+        return file_get_contents(__DIR__ . '/data/findOfficeResponse.json');
     }
 
     private function getErrorBody(): string

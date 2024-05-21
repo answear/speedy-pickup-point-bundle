@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^6.0|^7.0",
         "marc-mabe/php-enum": "^3.0|^4.3",
         "symfony/http-kernel": "^5.4|^6.0",
+        "symfony/property-access": "^5.4|^6.0",
         "symfony/serializer": "^5.4|^6.0",
         "webmozart/assert": "^1.3"
     },
