@@ -17,7 +17,7 @@ class Site
     public string $municipalityEn;
     public string $region;
     public string $regionEn;
-    public string $postCode;
+    public ?string $postCode;
     public int $addressNomenclature;
     public float $x;
     public float $y;
