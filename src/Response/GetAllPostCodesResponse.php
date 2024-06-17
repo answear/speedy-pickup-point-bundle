@@ -6,10 +6,7 @@ namespace Answear\SpeedyBundle\Response;
 
 use Answear\SpeedyBundle\Response\Struct\PostCode;
 use Answear\SpeedyBundle\Response\Struct\PostCodeCollection;
-use Symfony\Component\Serializer\Encoder\CsvEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Answear\SpeedyBundle\Service\CsvUtil;
 
 class GetAllPostCodesResponse
 {
@@ -27,12 +24,22 @@ class GetAllPostCodesResponse
 
     public static function fromCsv(string $csv): self
     {
-        $serializer = new Serializer([new ObjectNormalizer(), new ArrayDenormalizer()], [new CsvEncoder()]);
+        $rows = CsvUtil::parseCsvStringToArray($csv);
+        $count = count($rows);
 
-        $postCodes = $serializer->deserialize($csv, PostCode::class . '[]', CsvEncoder::FORMAT);
+        $collection = [];
+        for ($i = 1; $i < $count; ++$i) {
+            $row = $rows[$i];
+
+            $postCode = new PostCode();
+            $postCode->postCode = $row[0];
+            $postCode->siteId = (int) $row[1];
+
+            $collection[] = $postCode;
+        }
 
         return new self(
-            new PostCodeCollection($postCodes)
+            new PostCodeCollection($collection)
         );
     }
 }
