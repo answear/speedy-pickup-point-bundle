@@ -8,22 +8,18 @@ use Answear\SpeedyBundle\Exception\CsvProcessingException;
 
 class CsvUtil
 {
-    public static function parseCsvStringToArray(string $csv, int $length = 10000, string $separator = ','): array
+    public static function parseCsvStringToSplFileObject(string $csv): \SplFileObject
     {
-        $rows = [];
-        $handle = fopen('php://memory', 'rb+');
-        fwrite($handle, $csv);
-        rewind($handle);
+        $file = new \SplFileObject('php://temp', 'r+');
+        $file->fwrite($csv);
+        $file->rewind();
+        $file->setFlags(\SplFileObject::READ_CSV | \SplFileObject::READ_AHEAD | \SplFileObject::SKIP_EMPTY | \SplFileObject::DROP_NEW_LINE);
 
-        if (false !== $handle) {
-            while (false !== ($data = fgetcsv($handle, $length, $separator))) {
-                $rows[] = $data;
-            }
-            fclose($handle);
-        } else {
-            throw new CsvProcessingException('Unable to process CSV string');
+        $headers = $file->fgetcsv();
+        if (false === $headers) {
+            throw new CsvProcessingException('File is empty.');
         }
 
-        return $rows;
+        return $file;
     }
 }

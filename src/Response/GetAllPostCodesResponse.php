@@ -24,12 +24,11 @@ class GetAllPostCodesResponse
 
     public static function fromCsv(string $csv): self
     {
-        $rows = CsvUtil::parseCsvStringToArray($csv);
-        $count = count($rows);
+        $file = CsvUtil::parseCsvStringToSplFileObject($csv);
 
         $collection = [];
-        for ($i = 1; $i < $count; ++$i) {
-            $row = $rows[$i];
+        while (!$file->eof()) {
+            $row = $file->fgetcsv();
 
             $postCode = new PostCode();
             $postCode->postCode = $row[0];
