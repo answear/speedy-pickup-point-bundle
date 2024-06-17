@@ -27,8 +27,10 @@ class GetAllPostCodesResponse
         $file = CsvUtil::parseCsvStringToSplFileObject($csv);
 
         $collection = [];
-        while (!$file->eof()) {
-            $row = $file->fgetcsv();
+        foreach ($file as $i => $row) {
+            if (0 === $i) {
+                continue;
+            }
 
             $postCode = new PostCode();
             $postCode->postCode = $row[0];
