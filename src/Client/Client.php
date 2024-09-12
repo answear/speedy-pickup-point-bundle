@@ -14,6 +14,9 @@ use Psr\Http\Message\ResponseInterface;
 
 class Client
 {
+    private const CONNECTION_TIMEOUT = 10;
+    private const TIMEOUT = 30;
+    
     private ConfigProvider $configuration;
     private ClientInterface $client;
 
@@ -25,6 +28,8 @@ class Client
         $this->client = $client ?? new GuzzleClient(
             [
                 'base_uri' => $configuration->getUrl(),
+                'timeout' => self::TIMEOUT,
+                'connect_timeout' => self::CONNECTION_TIMEOUT
             ]
         );
     }
