@@ -6,18 +6,14 @@ namespace Answear\SpeedyBundle\Response\Struct;
 
 use Webmozart\Assert\Assert;
 
-class PostCodeCollection implements \Countable, \IteratorAggregate
+readonly class PostCodeCollection implements \Countable, \IteratorAggregate
 {
     /**
-     * @var PostCode[]
+     * @param PostCode[] $postCodes
      */
-    private array $postCodes;
-
-    public function __construct(array $postCodes)
+    public function __construct(public array $postCodes)
     {
         Assert::allIsInstanceOf($postCodes, PostCode::class);
-
-        $this->postCodes = $postCodes;
     }
 
     /**

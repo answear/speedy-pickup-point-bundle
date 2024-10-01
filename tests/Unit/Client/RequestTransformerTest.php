@@ -10,6 +10,8 @@ use Answear\SpeedyBundle\Client\Serializer;
 use Answear\SpeedyBundle\Request\FindOfficeRequest;
 use Answear\SpeedyBundle\Request\Request;
 use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class RequestTransformerTest extends TestCase
@@ -17,10 +19,7 @@ class RequestTransformerTest extends TestCase
     use ConfigProviderTrait;
 
     private RequestTransformer $transformer;
-    /**
-     * @var Serializer|\PHPUnit\Framework\MockObject\MockObject
-     */
-    private $serializer;
+    private Serializer|MockObject $serializer;
 
     public function setUp(): void
     {
@@ -34,9 +33,7 @@ class RequestTransformerTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestTransformed(): void
     {
         $request = new FindOfficeRequest();

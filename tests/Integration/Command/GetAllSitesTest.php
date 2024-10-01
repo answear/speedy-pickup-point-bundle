@@ -40,7 +40,7 @@ class GetAllSitesTest extends TestCase
 
         $response = $command->getAllSites(new GetAllSitesRequest());
 
-        $this->assertCount(13, $response->getSites());
+        $this->assertCount(13, $response->sites);
         $this->assertSites($response);
     }
 
@@ -54,12 +54,12 @@ class GetAllSitesTest extends TestCase
 
         $response = $command->getAllSites(new GetAllSitesRequest());
 
-        $this->assertCount(0, $response->getSites());
+        $this->assertCount(0, $response->sites);
     }
 
     private function assertSites(GetAllSitesResponse $response): void
     {
-        $site = $response->getSites()->get(0);
+        $site = $response->sites->get(0);
 
         $this->assertSame(
             '642202552,642,0,s.,s.,1 DECEMBRIE,1 DECEMBRIE,COM. 1 DECEMBRIE,COM. 1 DECEMBRIE,ILFOV,ILFOV,077005,1,26.060031,44.288061,1111110,959,959',

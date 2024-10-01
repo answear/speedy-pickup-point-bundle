@@ -9,11 +9,8 @@ class GetAllSitesRequest extends Request
     private const ENDPOINT = '/location/site/csv';
     private const HTTP_METHOD = 'POST';
 
-    private ?int $countryId;
-
-    public function __construct(?int $countryId = null)
+    public function __construct(public readonly ?int $countryId = null)
     {
-        $this->countryId = $countryId;
     }
 
     public function getEndpoint(): string

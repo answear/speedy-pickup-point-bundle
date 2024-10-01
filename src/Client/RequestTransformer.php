@@ -11,18 +11,11 @@ use GuzzleHttp\Psr7\Uri;
 
 class RequestTransformer
 {
-    private Serializer $serializer;
-    private AuthenticationDecorator $decorator;
-    private ConfigProvider $configuration;
-
     public function __construct(
-        Serializer $serializer,
-        AuthenticationDecorator $decorator,
-        ConfigProvider $configuration
+        private Serializer $serializer,
+        private AuthenticationDecorator $decorator,
+        private ConfigProvider $configuration,
     ) {
-        $this->serializer = $serializer;
-        $this->decorator = $decorator;
-        $this->configuration = $configuration;
     }
 
     public function transform(Request $request): HttpRequest

@@ -15,6 +15,7 @@ use Answear\SpeedyBundle\Response\FindOfficeResponse;
 use Answear\SpeedyBundle\Tests\ConfigProviderTrait;
 use Answear\SpeedyBundle\Tests\MockGuzzleTrait;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 class FindOfficeTest extends TestCase
@@ -31,9 +32,7 @@ class FindOfficeTest extends TestCase
         $this->client = new Client($this->getConfiguration(), $this->setupGuzzleClient());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function successfulFindOffice(): void
     {
         $command = $this->getCommand();
@@ -41,13 +40,11 @@ class FindOfficeTest extends TestCase
 
         $response = $command->findOffice(new FindOfficeRequest());
 
-        $this->assertCount(1, $response->getOffices());
+        $this->assertCount(1, $response->offices);
         $this->assertOffice($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function responseWithError(): void
     {
         $this->expectException(MalformedResponseException::class);
@@ -58,13 +55,13 @@ class FindOfficeTest extends TestCase
 
         $response = $command->findOffice(new FindOfficeRequest());
 
-        $this->assertCount(1, $response->getOffices());
+        $this->assertCount(1, $response->offices);
         $this->assertOffice($response);
     }
 
     private function assertOffice(FindOfficeResponse $response): void
     {
-        $office = $response->getOffices()->get(0);
+        $office = $response->offices->get(0);
 
         $this->assertNotNull($office);
         $this->assertSame($office->id, 1);
@@ -114,7 +111,8 @@ class FindOfficeTest extends TestCase
                     'id' => 'EE20210317183038558FZEMSKVR',
                     'code' => 1,
                 ],
-            ]
+            ],
+            JSON_THROW_ON_ERROR
         );
     }
 }

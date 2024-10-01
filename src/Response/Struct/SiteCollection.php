@@ -6,18 +6,14 @@ namespace Answear\SpeedyBundle\Response\Struct;
 
 use Webmozart\Assert\Assert;
 
-class SiteCollection implements \Countable, \IteratorAggregate
+readonly class SiteCollection implements \Countable, \IteratorAggregate
 {
     /**
-     * @var Site[]
+     * @param Site[] $sites
      */
-    private array $sites;
-
-    public function __construct(array $sites)
+    public function __construct(public array $sites)
     {
         Assert::allIsInstanceOf($sites, Site::class);
-
-        $this->sites = $sites;
     }
 
     /**

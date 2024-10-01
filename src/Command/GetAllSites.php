@@ -12,13 +12,10 @@ use Answear\SpeedyBundle\Response\GetAllSitesResponse;
 
 class GetAllSites extends AbstractCommand
 {
-    private Client $client;
-    private RequestTransformer $transformer;
-
-    public function __construct(Client $client, RequestTransformer $transformer)
-    {
-        $this->client = $client;
-        $this->transformer = $transformer;
+    public function __construct(
+        private Client $client,
+        private RequestTransformer $transformer,
+    ) {
     }
 
     public function getAllSites(GetAllSitesRequest $request): GetAllSitesResponse

@@ -9,11 +9,8 @@ class GetAllPostCodesRequest extends Request
     private const ENDPOINT = '/location/postcode/csv';
     private const HTTP_METHOD = 'POST';
 
-    private int $countryId;
-
-    public function __construct(int $countryId)
+    public function __construct(public readonly int $countryId)
     {
-        $this->countryId = $countryId;
     }
 
     public function getEndpoint(): string

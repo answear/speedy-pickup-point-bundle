@@ -40,7 +40,7 @@ class GetAllPostCodesTest extends TestCase
 
         $response = $command->getAllPostCodes(new GetAllPostCodesRequest(100));
 
-        $this->assertCount(9, $response->getPostCodes());
+        $this->assertCount(9, $response->postCodes);
         $this->assertPostCodes($response);
     }
 
@@ -54,12 +54,12 @@ class GetAllPostCodesTest extends TestCase
 
         $response = $command->getAllPostCodes(new GetAllPostCodesRequest(100));
 
-        $this->assertCount(0, $response->getPostCodes());
+        $this->assertCount(0, $response->postCodes);
     }
 
     private function assertPostCodes(GetAllPostCodesResponse $response): void
     {
-        $postCode = $response->getPostCodes()->get(0);
+        $postCode = $response->postCodes->get(0);
 
         $this->assertSame(
             '1000,68134',
