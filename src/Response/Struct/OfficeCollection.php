@@ -11,18 +11,14 @@ use Webmozart\Assert\Assert;
  *
  * @url https://api.speedy.bg/web-api.html#href-ds-shipment-address
  */
-class OfficeCollection implements \Countable, \IteratorAggregate
+readonly class OfficeCollection implements \Countable, \IteratorAggregate
 {
     /**
-     * @var Office[]
+     * @param Office[] $offices
      */
-    private array $offices;
-
-    public function __construct(array $offices)
+    public function __construct(private array $offices)
     {
         Assert::allIsInstanceOf($offices, Office::class);
-
-        $this->offices = $offices;
     }
 
     /**

@@ -8,18 +8,10 @@ use Answear\SpeedyBundle\Response\Struct\Office;
 use Answear\SpeedyBundle\Response\Struct\OfficeCollection;
 use Webmozart\Assert\Assert;
 
-class FindOfficeResponse
+readonly class FindOfficeResponse
 {
-    public OfficeCollection $offices;
-
-    public function __construct(OfficeCollection $offices)
+    public function __construct(public OfficeCollection $offices)
     {
-        $this->offices = $offices;
-    }
-
-    public function getOffices(): OfficeCollection
-    {
-        return $this->offices;
     }
 
     public static function fromArray(array $arrayResponse): self
@@ -29,7 +21,7 @@ class FindOfficeResponse
         return new self(
             new OfficeCollection(
                 array_map(
-                    fn ($officeData) => Office::fromArray($officeData),
+                    static fn ($officeData) => Office::fromArray($officeData),
                     $arrayResponse['offices']
                 )
             )

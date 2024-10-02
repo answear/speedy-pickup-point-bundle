@@ -11,18 +11,10 @@ use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-class GetAllSitesResponse
+readonly class GetAllSitesResponse
 {
-    public SiteCollection $sites;
-
-    public function __construct(SiteCollection $sites)
+    public function __construct(public SiteCollection $sites)
     {
-        $this->sites = $sites;
-    }
-
-    public function getSites(): SiteCollection
-    {
-        return $this->sites;
     }
 
     public static function fromCsv(string $csv): self

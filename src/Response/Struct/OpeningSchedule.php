@@ -6,17 +6,13 @@ namespace Answear\SpeedyBundle\Response\Struct;
 
 use Webmozart\Assert\Assert;
 
-class OpeningSchedule
+readonly class OpeningSchedule
 {
-    public OpeningTime $weekday;
-    public OpeningTime $saturday;
-    public OpeningTime $sunday;
-
-    public function __construct(OpeningTime $weekday, OpeningTime $saturday, OpeningTime $sunday)
-    {
-        $this->weekday = $weekday;
-        $this->saturday = $saturday;
-        $this->sunday = $sunday;
+    public function __construct(
+        public OpeningTime $weekday,
+        public OpeningTime $saturday,
+        public OpeningTime $sunday,
+    ) {
     }
 
     public static function fromArray(array $officeData): self

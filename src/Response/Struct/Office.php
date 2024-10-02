@@ -8,28 +8,33 @@ use Answear\SpeedyBundle\Enum\CargoType;
 use Answear\SpeedyBundle\Enum\OfficeType;
 use Webmozart\Assert\Assert;
 
-class Office
+readonly class Office
 {
-    public int $id;
-    public string $name;
-    public string $nameEn;
-    public int $siteId;
-    public OfficeAddress $address;
-    public OpeningSchedule $openingSchedule;
-    public WorkingTimeSchedule $workingTimeSchedule;
-    public ShipmentParcelSize $maxParcelDimension;
-    public float $maxParcelWeight;
-    public OfficeType $type;
-    public ?int $nearbyOfficeId;
-    public bool $palletOffice;
-    public bool $cardPaymentAllowed;
-    public bool $cashPaymentAllowed;
-    public \DateTimeInterface $validFrom;
-    public \DateTimeInterface $validTo;
-    /** @var CargoType[] */
-    public array $cargoTypesAllowed;
-    public bool $pickUpAllowed;
-    public bool $dropOffAllowed;
+    /**
+     * @param CargoType[] $cargoTypesAllowed
+     */
+    public function __construct(
+        public int $id,
+        public string $name,
+        public string $nameEn,
+        public int $siteId,
+        public OfficeAddress $address,
+        public OpeningSchedule $openingSchedule,
+        public WorkingTimeSchedule $workingTimeSchedule,
+        public ShipmentParcelSize $maxParcelDimension,
+        public float $maxParcelWeight,
+        public OfficeType $type,
+        public ?int $nearbyOfficeId,
+        public bool $palletOffice,
+        public bool $cardPaymentAllowed,
+        public bool $cashPaymentAllowed,
+        public \DateTimeInterface $validFrom,
+        public \DateTimeInterface $validTo,
+        public array $cargoTypesAllowed,
+        public bool $pickUpAllowed,
+        public bool $dropOffAllowed,
+    ) {
+    }
 
     public static function fromArray(array $officeData): self
     {
@@ -51,27 +56,28 @@ class Office
         Assert::boolean($officeData['pickUpAllowed']);
         Assert::boolean($officeData['dropOffAllowed']);
 
-        $office = new self();
-        $office->id = $officeData['id'];
-        $office->name = $officeData['name'];
-        $office->nameEn = $officeData['nameEn'];
-        $office->siteId = $officeData['siteId'];
-        $office->address = OfficeAddress::fromArray($officeData['address']);
-        $office->openingSchedule = OpeningSchedule::fromArray($officeData);
-        $office->workingTimeSchedule = WorkingTimeSchedule::fromArray($officeData);
-        $office->maxParcelDimension = ShipmentParcelSize::fromArray($officeData['maxParcelDimensions']);
-        $office->maxParcelWeight = $officeData['maxParcelWeight'];
-        $office->type = OfficeType::get($officeData['type']);
-        $office->nearbyOfficeId = $officeData['nearbyOfficeId'] ?? null;
-        $office->palletOffice = $officeData['palletOffice'];
-        $office->cardPaymentAllowed = $officeData['cardPaymentAllowed'];
-        $office->cashPaymentAllowed = $officeData['cashPaymentAllowed'];
-        $office->validFrom = new \DateTimeImmutable($officeData['validFrom']);
-        $office->validTo = new \DateTimeImmutable($officeData['validTo']);
-        $office->pickUpAllowed = $officeData['pickUpAllowed'];
-        $office->dropOffAllowed = $officeData['dropOffAllowed'];
-        $office->cargoTypesAllowed = array_map(fn ($type) => CargoType::get($type), $officeData['cargoTypesAllowed']);
-
-        return $office;
+        return new self(
+            $officeData['id'],
+            $officeData['name'],
+            $officeData['nameEn'],
+            $officeData['siteId'],
+            OfficeAddress::fromArray($officeData['address']),
+            OpeningSchedule::fromArray($officeData),
+            WorkingTimeSchedule::fromArray($officeData),
+            ShipmentParcelSize::fromArray($officeData['maxParcelDimensions']),
+            $officeData['maxParcelWeight'],
+            OfficeType::from($officeData['type']),
+            $officeData['nearbyOfficeId'] ?? null,
+            $officeData['palletOffice'],
+            $officeData['cardPaymentAllowed'],
+            $officeData['cashPaymentAllowed'],
+            new \DateTimeImmutable($officeData['validFrom']),
+            new \DateTimeImmutable($officeData['validTo']),
+            array_map(static fn($type) => CargoType::from($type),
+                $officeData['cargoTypesAllowed']
+            ),
+            $officeData['pickUpAllowed'],
+            $officeData['dropOffAllowed'],
+        );
     }
 }

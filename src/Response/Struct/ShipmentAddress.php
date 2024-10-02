@@ -47,7 +47,6 @@ class ShipmentAddress
         $this->streetId = $addressData['streetId'] ?? null;
         $this->streetType = $addressData['streetType'] ?? null;
         $this->streetName = $addressData['streetName'] ?? null;
-        $this->streetType = $addressData['streetType'] ?? null;
         $this->streetNo = $addressData['streetNo'] ?? null;
         $this->latitude = $addressData['y'];
         $this->longitude = $addressData['x'];

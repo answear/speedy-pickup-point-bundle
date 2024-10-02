@@ -6,26 +6,15 @@ namespace Answear\SpeedyBundle\Response;
 
 use Webmozart\Assert\Assert;
 
-class ErrorResponse
+readonly class ErrorResponse
 {
-    public string $message;
-    public string $id;
-    public int $code;
-    public ?string $context;
-    public ?string $component;
-
     public function __construct(
-        string $message,
-        string $id,
-        int $code,
-        ?string $context = null,
-        ?string $component = null
+        public string $message,
+        public string $id,
+        public int $code,
+        public ?string $context = null,
+        public ?string $component = null,
     ) {
-        $this->message = $message;
-        $this->id = $id;
-        $this->code = $code;
-        $this->context = $context;
-        $this->component = $component;
     }
 
     public static function isErrorResponse(array $response): bool

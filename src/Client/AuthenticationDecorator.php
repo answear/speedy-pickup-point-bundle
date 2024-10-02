@@ -9,18 +9,15 @@ use Answear\SpeedyBundle\Request\Request;
 
 class AuthenticationDecorator
 {
-    private ConfigProvider $configuration;
-
-    public function __construct(ConfigProvider $configuration)
+    public function __construct(private ConfigProvider $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     public function decorate(Request $request): void
     {
-        $request->setUserName($this->configuration->getUsername());
-        $request->setPassword($this->configuration->getPassword());
-        $request->setLanguage($this->configuration->getLanguage());
-        $request->setClientSystemId($this->configuration->getClientSystemId());
+        $request->userName = $this->configuration->username;
+        $request->password = $this->configuration->password;
+        $request->language = $this->configuration->language;
+        $request->clientSystemId = $this->configuration->clientSystemId;
     }
 }

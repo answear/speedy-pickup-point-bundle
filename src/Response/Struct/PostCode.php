@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Answear\SpeedyBundle\Response\Struct;
 
-class PostCode
+readonly class PostCode
 {
-    public string $postCode;
-    public int $siteId;
+    public function __construct(
+        public string $postCode,
+        public int $siteId,
+    ) {
+    }
 }
