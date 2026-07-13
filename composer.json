@@ -6,20 +6,20 @@
     "require": {
         "php": "^8.2",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^6.0|^7.0",
-        "symfony/http-kernel": "^6.0|^7.0",
-        "symfony/property-access": "^6.0|^7.0",
-        "symfony/serializer": "^6.0|^7.0",
-        "webmozart/assert": "^1.11"
+        "guzzlehttp/guzzle": "^7.0|^8.0",
+        "symfony/http-kernel": "^7.0|^8.0",
+        "symfony/property-access": "^7.0|^8.0",
+        "symfony/serializer": "^7.0|^8.0",
+        "webmozart/assert": "^1.11|^2.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.64",
-        "phpro/grumphp": "^2.8",
-        "phpstan/phpstan": "^1.12",
-        "phpstan/phpstan-webmozart-assert": "^1.2",
+        "friendsofphp/php-cs-fixer": "^v3.95.13",
+        "phpro/grumphp": "^2.21",
+        "phpstan/phpstan": "^2.2.2",
+        "phpstan/phpstan-webmozart-assert": "^2.0",
         "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-master",
-        "symfony/phpunit-bridge": "6.1.*|^7.0"
+        "symfony/phpunit-bridge": "^7.0|^8.0"
     },
     "autoload": {
         "psr-4": {

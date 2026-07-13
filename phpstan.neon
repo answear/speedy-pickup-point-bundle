@@ -4,9 +4,6 @@ includes:
 
 parameters:
     level: 5
+    treatPhpDocTypesAsCertain: false
     paths:
         - %rootDir%/../../../src
-    ignoreErrors:
-        - message: '#.*NodeDefinition::children.*#'
-          path: ./src/DependencyInjection
-

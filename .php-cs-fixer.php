@@ -2,21 +2,23 @@
 
 declare(strict_types=1);
 
-$config = new PhpCsFixer\Config();
-
-$finder = $config->getFinder()
+$finder = (new PhpCsFixer\Finder())
+    ->in(__DIR__)
     ->exclude(
         [
             'vendor',
         ]
-    )
-    ->in(__DIR__);
+    );
 
-return $config
-    ->registerCustomFixers([])
+return (new PhpCsFixer\Config())
+    ->setFinder($finder)
+    ->registerCustomFixers(
+        []
+    )
     ->setRules(
         [
             '@Symfony' => true,
+            'no_binary_string' => false,
             'strict_param' => false,
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
@@ -28,6 +30,7 @@ return $config
             'single_line_throw' => false,
             'modernize_types_casting' => true,
             'function_declaration' => false,
+            'nullable_type_declaration_for_default_null_value' => true,
             'ordered_imports' => [
                 'imports_order' => [
                     'class',
@@ -36,5 +39,6 @@ return $config
                 ],
                 'sort_algorithm' => 'alpha',
             ],
+            'phpdoc_separation' => ['skip_unlisted_annotations' => true],
         ]
     );
